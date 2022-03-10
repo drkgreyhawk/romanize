@@ -11,9 +11,13 @@ import Array exposing (Array)
 -- Furey, Edward "Roman Numeral Converter" at https://www.calculatorsoup.com/calculators/conversions/roman-numeral-converter.php
 
 
+{-| This is the standard Roman numeral conversion function and will only accept an integer between 1 and 3,999.
+
+"The largest number you can write in Roman numerals is 3,999 which is MMMCMXCIX." - Furey, Edward "Roman Numeral Converter"
+-}
+
 standardConversion : Int -> String
 standardConversion int =
-    -- Standard will only accept an int between 1 and 3,999
     if int <= 0 || int >= 4000 then
         "Romanize | Integer out of bounds: " ++ String.fromInt int
 
