@@ -1,0 +1,22 @@
+{
+  "name": "romanize",
+  "version": "0.0.5",
+  "description": "Converts a integer to a roman numeral string including overlining.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx elm-test-rs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeticode/romanize.git"
+  },
+  "author": "XetiCode LLC",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/xeticode/romanize/issues"
+  },
+  "homepage": "https://github.com/xeticode/romanize#readme",
+  "devDependencies": {
+    "elm-tooling": "1.7.0"
+  }
+}
