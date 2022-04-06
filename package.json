@@ -4,7 +4,8 @@
   "description": "Converts a integer to a roman numeral string including overlining.",
   "main": "index.js",
   "scripts": {
-    "test": "npx elm-test-rs"
+    "test": "npx elm-test-rs",
+    "postinstall": "npx elm-tooling install"
   },
   "repository": {
     "type": "git",

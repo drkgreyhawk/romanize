@@ -1,4 +1,4 @@
-module Romanize exposing (standardConversion)
+module Romanize exposing (overlineCharter, overlineConversion, standardConversion)
 
 import Array exposing (Array)
 
@@ -14,12 +14,30 @@ import Array exposing (Array)
 {-| This is the standard Roman numeral conversion function and will only accept an integer between 1 and 3,999.
 
 "The largest number you can write in Roman numerals is 3,999 which is MMMCMXCIX." - Furey, Edward "Roman Numeral Converter"
--}
 
+-}
 standardConversion : Int -> String
 standardConversion int =
     if int <= 0 || int >= 4000 then
         "Romanize | Integer out of bounds: " ++ String.fromInt int
+
+    else
+        convertToRomanNumeral int
+
+
+{-| If you need a roman numeral that exceeds 3,999 you can use what's called an overline. Overlines are represented in Strings by a \_ and multiply the following Roman Numeral by 1,000.
+
+For example: 5,000 = \_V
+
+Overline cannot exceed 3,999,999
+
+"An overline on a Roman numeral means you are multiplying that Roman numeral by 1,000. For the number 50,000 in Roman numerals you would use the Roman numeral L (50) with an overline to make it 50,000." - Furey, Edward "Roman Numeral Converter"
+
+-}
+overlineConversion : Int -> String
+overlineConversion int =
+    if int < 4000 then
+        standardConversion int
 
     else
         convertToRomanNumeral int
@@ -128,6 +146,36 @@ romanizeArrayIndex index int =
 
         3 ->
             String.repeat int "M"
-
+        
         _ ->
             ""
+
+
+overlineCharter : Int -> String
+overlineCharter int =
+    let
+        millions =
+            Debug.log "millions" (int // 1000000)
+
+        hundred_thousands =
+            Debug.log "hundred thousands" (remainderBy 10 (int // 100000))
+
+        ten_thousands =
+            Debug.log "ten thousands" (remainderBy 10 (int // 10000))
+
+        thousands =
+            Debug.log "thousands" (remainderBy 10 (int // 1000))
+
+        hundreds =
+            Debug.log "hundreds" (remainderBy 10 (int // 100))
+
+        tens =
+            Debug.log "tens" (remainderBy 10 (int // 10))
+        
+        ones =
+            Debug.log "ones" (remainderBy 10 int)
+    in
+    if millions > 0 then
+        String.repeat millions "_M"
+    else
+    "q"
