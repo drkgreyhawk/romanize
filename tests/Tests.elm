@@ -139,9 +139,4 @@ suite =
                     Romanize.standardConversion num
                         |> Expect.equal ("Romanize | Integer out of bounds: " ++ String.fromInt num)
             ]
-        , Test.skip <|
-            Test.test "Testing conversion of overline number" <|
-                \_ ->
-                    Romanize.standardConversion 4000
-                        |> Expect.equal "_IV"
         ]
